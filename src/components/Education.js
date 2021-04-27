@@ -1,41 +1,121 @@
 import React from "react";
 
 function Education(props) {
+  const {
+    schoolNameText,
+    schoolNameShow,
+    studyTitleText,
+    studyTitleShow,
+    schoolStartingDateText,
+    schoolStartingDateShow,
+    schoolEndingDateText,
+    schoolEndingDateShow,
+  } = props.data;
+  const handleInput = props.handleInput;
+  const handleInputEdit = props.handleInputEdit;
   return (
     <div>
       <fieldset>
         <legend>Education</legend>
         <div>
-          <label htmlFor="schoolName">School Name: </label>
-          <input type="text" name="schoolName" className="schoolNameInput" />
-          <p display="none" className="schoolNameLine"></p>
-          <button>Edit</button>
+          <label htmlFor="schoolNameText">School Name: </label>
+          {schoolNameShow ? (
+            <h4 display="none" className="schoolNameLine">
+              {schoolNameText}
+            </h4>
+          ) : (
+            <input
+              type="text"
+              name="schoolNameText"
+              value={schoolNameText}
+              onChange={handleInput}
+              className="schoolNameInput"
+            />
+          )}
+          {schoolNameShow ? (
+            <button onClick={handleInputEdit} name="schoolNameShow">
+              Edit
+            </button>
+          ) : (
+            <button onClick={handleInputEdit} name="schoolNameShow">
+              Submit
+            </button>
+          )}
         </div>
         <div>
-          <label htmlFor="studyTitle">Title: </label>
-          <input type="text" name="studyTitle" className="studyTitleInput" />
-          <p display="none" className="studyTitleLine"></p>
-          <button>Edit</button>
+          <label htmlFor="studyTitleText">Title: </label>
+          {studyTitleShow ? (
+            <h4 display="none" className="studyTitleLine">
+              {studyTitleText}
+            </h4>
+          ) : (
+            <input
+              type="text"
+              name="studyTitleText"
+              value={studyTitleText}
+              onChange={handleInput}
+              className="studyTitleInput"
+            />
+          )}
+          {studyTitleShow ? (
+            <button onClick={handleInputEdit} name="studyTitleShow">
+              Edit
+            </button>
+          ) : (
+            <button onClick={handleInputEdit} name="studyTitleShow">
+              Submit
+            </button>
+          )}
         </div>
         <div>
-          <label htmlFor="schoolStartingDate">Starting Date: </label>
-          <input
-            type="date"
-            name="schoolStartingDate"
-            className="schoolStartingDateInput"
-          />
-          <p display="none" className="schoolStartingDateLine"></p>
-          <button>Edit</button>
+          <label htmlFor="schoolStartingDateText">Starting Date: </label>
+          {schoolStartingDateShow ? (
+            <h4 display="none" className="schoolStartingDateLine">
+              {schoolStartingDateText}
+            </h4>
+          ) : (
+            <input
+              type="date"
+              name="schoolStartingDateText"
+              value={schoolStartingDateText}
+              onChange={handleInput}
+              className="schoolStartingDateInput"
+            />
+          )}
+          {schoolStartingDateShow ? (
+            <button onClick={handleInputEdit} name="schoolStartingDateShow">
+              Edit
+            </button>
+          ) : (
+            <button onClick={handleInputEdit} name="schoolStartingDateShow">
+              Submit
+            </button>
+          )}
         </div>
         <div>
-          <label htmlFor="schoolEndingDate">Ending Date: </label>
-          <input
-            type="date"
-            name="schoolEndingDate"
-            className="schoolEndingDateInput"
-          />
-          <p display="none" className="schoolEndingDateLine"></p>
-          <button>Edit</button>
+          <label htmlFor="schoolEndingDateText">Ending Date: </label>
+          {schoolEndingDateShow ? (
+            <h4 display="none" className="schoolEndingDateLine">
+              {schoolEndingDateText}
+            </h4>
+          ) : (
+            <input
+              type="date"
+              name="schoolEndingDateText"
+              value={schoolEndingDateText}
+              onChange={handleInput}
+              className="schoolEndingDateInput"
+            />
+          )}
+          {schoolEndingDateShow ? (
+            <button onClick={handleInputEdit} name="schoolEndingDateShow">
+              Edit
+            </button>
+          ) : (
+            <button onClick={handleInputEdit} name="schoolEndingDateShow">
+              Submit
+            </button>
+          )}
         </div>
         <button>Add Education</button>
       </fieldset>
