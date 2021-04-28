@@ -3,13 +3,10 @@ import React from "react";
 function Contact(props) {
   const {
     firstNameText,
-    firstNameShow,
     lastNameText,
-    lastNameShow,
     emailText,
-    emailShow,
     phoneText,
-    phoneShow,
+    formSubmit,
   } = props.data;
   const handleInput = props.handleInput;
   const handleInputEdit = props.handleInputEdit;
@@ -19,7 +16,7 @@ function Contact(props) {
         <legend>Contact Information</legend>
         <div>
           <label htmlFor="firstNameText">First Name: </label>
-          {firstNameShow ? (
+          {formSubmit ? (
             <h4 className="firstNameLine">{firstNameText}</h4>
           ) : (
             <input
@@ -30,19 +27,10 @@ function Contact(props) {
               onChange={handleInput}
             />
           )}
-          {firstNameShow ? (
-            <button onClick={handleInputEdit} name="firstNameShow">
-              Edit
-            </button>
-          ) : (
-            <button onClick={handleInputEdit} name="firstNameShow">
-              Submit
-            </button>
-          )}
         </div>
         <div>
           <label htmlFor="lastNameText">Last Name: </label>
-          {lastNameShow ? (
+          {formSubmit ? (
             <h4 className="lastNameLine">{lastNameText}</h4>
           ) : (
             <input
@@ -53,19 +41,10 @@ function Contact(props) {
               onChange={handleInput}
             />
           )}
-          {lastNameShow ? (
-            <button onClick={handleInputEdit} name="lastNameShow">
-              Edit
-            </button>
-          ) : (
-            <button onClick={handleInputEdit} name="lastNameShow">
-              Submit
-            </button>
-          )}
         </div>
         <div>
           <label htmlFor="emailText">Email: </label>
-          {emailShow ? (
+          {formSubmit ? (
             <h4 className="emailLine">{emailText}</h4>
           ) : (
             <input
@@ -76,19 +55,10 @@ function Contact(props) {
               onChange={handleInput}
             />
           )}
-          {emailShow ? (
-            <button onClick={handleInputEdit} name="emailShow">
-              Edit
-            </button>
-          ) : (
-            <button onClick={handleInputEdit} name="emailShow">
-              Submit
-            </button>
-          )}
         </div>
         <div>
           <label htmlFor="phoneText">Phone Number: </label>
-          {phoneShow ? (
+          {formSubmit ? (
             <h4 className="phoneNumberLine">{phoneText}</h4>
           ) : (
             <input
@@ -98,15 +68,6 @@ function Contact(props) {
               className="phoneNumberInput"
               onChange={handleInput}
             />
-          )}
-          {phoneShow ? (
-            <button onClick={handleInputEdit} name="phoneShow">
-              Edit
-            </button>
-          ) : (
-            <button onClick={handleInputEdit} name="phoneShow">
-              Submit
-            </button>
           )}
         </div>
       </fieldset>

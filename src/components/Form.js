@@ -6,8 +6,26 @@ import Education from "./Education";
 function Form(props) {
   const handleInput = props.handleInput;
   const handleFormSubmit = props.handleFormSubmit;
-  const formSubmit = props.data.formSubmit;
   const handleInputEdit = props.handleInputEdit;
+  const handleEducationSubmit = props.handleEducationSubmit;
+  const educations = props.data.educations;
+  const formSubmit = props.data.formSubmit;
+  const handleEducationInput = props.handleEducationInput;
+  const addEducation = props.addEducation;
+  const deleteEducation = props.deleteEducation;
+  const educationList = educations.map((elem, index) => {
+    return (
+      <Education
+        key={index}
+        data={elem}
+        handleInput={handleInput}
+        handleInputEdit={handleInputEdit}
+        handleEducationSubmit={handleEducationSubmit}
+        handleEducationInput={handleEducationInput}
+        deleteEducation={deleteEducation}
+      />
+    );
+  });
   return (
     <div>
       <form>
@@ -16,11 +34,8 @@ function Form(props) {
           handleInput={handleInput}
           handleInputEdit={handleInputEdit}
         />
-        <Education
-          data={props.data}
-          handleInput={handleInput}
-          handleInputEdit={handleInputEdit}
-        />
+        {educationList}
+        <button onClick={addEducation}>Add Education</button>
         <Experience
           data={props.data}
           handleInput={handleInput}
