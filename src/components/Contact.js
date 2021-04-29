@@ -9,7 +9,6 @@ function Contact(props) {
     formSubmit,
   } = props.data;
   const handleInput = props.handleInput;
-  const handleInputEdit = props.handleInputEdit;
   return (
     <div>
       <fieldset>

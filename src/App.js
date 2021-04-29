@@ -30,22 +30,80 @@ class App extends Component {
           workStartingDateText: "",
           workEndingDateText: "",
           experienceId: uniqid(),
+          experienceShow: false,
         },
       ],
     };
     this.handleInput = this.handleInput.bind(this);
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
-    this.handleInputEdit = this.handleInputEdit.bind(this);
     this.handleEducationSubmit = this.handleEducationSubmit.bind(this);
     this.handleEducationInput = this.handleEducationInput.bind(this);
     this.addEducation = this.addEducation.bind(this);
     this.deleteEducation = this.deleteEducation.bind(this);
+    this.handleExperienceInput = this.handleExperienceInput.bind(this);
+    this.handleExperienceSubmit = this.handleExperienceSubmit.bind(this);
+    this.addExperience = this.addExperience.bind(this);
+    this.deleteExperience = this.deleteExperience.bind(this);
   }
   handleInput(event) {
     event.preventDefault();
     const { name, value } = event.target;
     this.setState({
       [name]: value,
+    });
+  }
+
+  handleExperienceInput(event) {
+    event.preventDefault();
+    const { name, value, dataset } = event.target;
+    const newExperinces = this.state.experiences.map((elem) => {
+      if (elem.experienceId === dataset.id) {
+        elem[name] = value;
+      }
+      return elem;
+    });
+    this.setState({
+      experiences: newExperinces,
+    });
+  }
+  handleExperienceSubmit(event) {
+    event.preventDefault();
+    const { name, dataset } = event.target;
+    const newExperiences = this.state.experiences.map((elem, index) => {
+      if (elem.experienceId === dataset.id) {
+        elem[name] = !this.state.experiences[index].experienceShow;
+      }
+      return elem;
+    });
+    this.setState({
+      experiences: newExperiences,
+    });
+  }
+  addExperience(event) {
+    event.preventDefault();
+    this.setState({
+      experiences: [
+        ...this.state.experiences,
+        {
+          companyNameText: "",
+          jobPositionText: "",
+          jobTitleText: "",
+          workStartingDateText: "",
+          workEndingDateText: "",
+          experienceId: uniqid(),
+          experienceShow: false,
+        },
+      ],
+    });
+  }
+  deleteExperience(event) {
+    event.preventDefault();
+    const { dataset } = event.target;
+    const newExperinces = this.state.experiences.filter((elem) => {
+      return elem.experienceId !== dataset.id;
+    });
+    this.setState({
+      experiences: newExperinces,
     });
   }
   addEducation(event) {
@@ -77,15 +135,6 @@ class App extends Component {
       educations: newEducations,
     });
   }
-  handleFormSubmit(event) {
-    event.preventDefault();
-    this.setState({
-      formSubmit: !this.state.formSubmit,
-    });
-  }
-  handleInputEdit(event) {
-    event.preventDefault();
-  }
   handleEducationSubmit(event) {
     event.preventDefault();
     const { name, dataset } = event.target;
@@ -105,9 +154,32 @@ class App extends Component {
     const newEducations = this.state.educations.filter((elem) => {
       return elem.educationId !== dataset.id;
     });
-    console.log(newEducations);
     this.setState({
       educations: newEducations,
+    });
+  }
+  handleFormSubmit(event) {
+    event.preventDefault();
+    const newEducations = this.state.educations.map((elem) => {
+      if (this.state.formSubmit === false) {
+        elem.educationShow = true;
+      } else if (this.state.formSubmit === true) {
+        elem.educationShow = false;
+      }
+      return elem;
+    });
+    const newExperiences = this.state.experiences.map((elem) => {
+      if (this.state.formSubmit === false) {
+        elem.experienceShow = true;
+      } else if (this.state.formSubmit === true) {
+        elem.experienceShow = false;
+      }
+      return elem;
+    });
+    this.setState({
+      formSubmit: !this.state.formSubmit,
+      educations: newEducations,
+      experiences: newExperiences,
     });
   }
   render() {
@@ -117,11 +189,14 @@ class App extends Component {
           data={this.state}
           handleInput={this.handleInput}
           handleFormSubmit={this.handleFormSubmit}
-          handleInputEdit={this.handleInputEdit}
           handleEducationSubmit={this.handleEducationSubmit}
           handleEducationInput={this.handleEducationInput}
           addEducation={this.addEducation}
           deleteEducation={this.deleteEducation}
+          handleExperienceInput={this.handleExperienceInput}
+          handleExperienceSubmit={this.handleExperienceSubmit}
+          addExperience={this.addExperience}
+          deleteExperience={this.deleteExperience}
         />
       </div>
     );

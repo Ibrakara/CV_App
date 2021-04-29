@@ -76,23 +76,13 @@ function Education(props) {
             />
           )}
         </div>
-        {educationShow ? (
-          <button
-            name="educationShow"
-            data-id={educationId}
-            onClick={handleEducationSubmit}
-          >
-            Edit
-          </button>
-        ) : (
-          <button
-            name="educationShow"
-            data-id={educationId}
-            onClick={handleEducationSubmit}
-          >
-            Submit
-          </button>
-        )}
+        <button
+          name="educationShow"
+          data-id={educationId}
+          onClick={handleEducationSubmit}
+        >
+          {educationShow ? "Edit" : "Submit"}
+        </button>
         <button data-id={educationId} onClick={deleteEducation}>
           Delete
         </button>
