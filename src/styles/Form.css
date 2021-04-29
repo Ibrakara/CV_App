@@ -1,0 +1,13 @@
+#form-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-content: space-around;
+  align-items: center;
+  margin: 2rem 0;
+}
+button {
+  margin: 0;
+  border-radius: 8px;
+  font-size: 2vmin;
+}

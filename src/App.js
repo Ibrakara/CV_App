@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import Form from "./components/Form";
+import Header from "./components/Header";
+import "./styles/App.css";
 import uniqid from "uniqid";
 
 class App extends Component {
@@ -185,6 +187,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <Header />
         <Form
           data={this.state}
           handleInput={this.handleInput}

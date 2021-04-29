@@ -2,6 +2,7 @@ import React from "react";
 import Experience from "./Experience";
 import Contact from "./Contact";
 import Education from "./Education";
+import "../styles/Form.css";
 
 function Form(props) {
   const handleInput = props.handleInput;
@@ -40,19 +41,17 @@ function Form(props) {
     );
   });
   return (
-    <div>
-      <form>
-        <Contact data={props.data} handleInput={handleInput} />
-        {educationList}
-        <button onClick={addEducation}>Add Education</button>
-        {experienceList}
-        <button onClick={addExperience}>Add Experince</button>
-        <br />
-        <button onClick={handleFormSubmit}>
-          {formSubmit ? "Edit" : "Submit"}
-        </button>
-      </form>
-    </div>
+    <form id="form-div">
+      <Contact data={props.data} handleInput={handleInput} />
+      {educationList}
+      <button onClick={addEducation}>Add Education</button>
+      {experienceList}
+      <button onClick={addExperience}>Add Experince</button>
+      <br />
+      <button onClick={handleFormSubmit}>
+        {formSubmit ? "Edit" : "Submit"}
+      </button>
+    </form>
   );
 }
 export default Form;

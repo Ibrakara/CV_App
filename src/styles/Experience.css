@@ -1,0 +1,32 @@
+.experience-line-div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+#experience-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-content: space-around;
+  /* align-items: center; */
+  margin: 1rem 0;
+  width: 100%;
+}
+label {
+  margin-top: 1vmin;
+  font-size: 3vmin;
+}
+input {
+  margin-top: 1vmin;
+  font-size: 3vmin;
+}
+h4 {
+  font-size: 3vmin;
+}
+.form-button {
+  width: fit-content;
+  margin: 0.5rem;
+  margin-left: 43%;
+  border-radius: 8px;
+  font-size: 2vmin;
+}
