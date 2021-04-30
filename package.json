@@ -1,4 +1,5 @@
 {
+  "homepage": "https://ibrakara.github.io/CV_App/",
   "name": "cv-project",
   "version": "0.1.0",
   "private": true,
@@ -40,6 +41,5 @@
   },
   "devDependencies": {
     "gh-pages": "^3.1.0"
-  },
-  "homepage": "https://ibrakara.github.io/CV_App/"
+  }
 }
