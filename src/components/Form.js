@@ -15,9 +15,10 @@ function Form(props) {
   const handleExperienceSubmit = props.handleExperienceSubmit;
   const addExperience = props.addExperience;
   const deleteExperience = props.deleteExperience;
-  const formSubmit = props.data.formSubmit;
-  const educations = props.data.educations;
-  const experiences = props.data.experiences;
+  const contactData = props.contactData;
+  const formSubmit = contactData.formSubmit;
+  const educations = props.educationsData;
+  const experiences = props.experiencesData;
   const educationList = educations.map((elem, index) => {
     return (
       <Education
@@ -42,7 +43,7 @@ function Form(props) {
   });
   return (
     <form id="form-div">
-      <Contact data={props.data} handleInput={handleInput} />
+      <Contact data={contactData} handleInput={handleInput} />
       {educationList}
       <button onClick={addEducation}>Add Education</button>
       {experienceList}
